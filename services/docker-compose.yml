@@ -1,0 +1,33 @@
+# Defines the project name (group of containers).
+# This name will be used as a prefix for networks and volumes.
+name: "vibe-panda"
+
+services:
+  discordbot:
+    # --- Image and Container Configuration ---
+    image: vibe-panda/discordbot
+
+    # Container Name: Defines a static name for the running container.
+    container_name: vibe-panda-discordbot
+
+    # --- Build Configuration ---
+    build:
+      # The 'context' points to our service's directory, relative
+      # to the location of this docker-compose.yml file.
+      context: ./discordbot
+
+    # --- Environment Configuration ---
+    # The .env file must be inside the service's folder.
+    env_file:
+      - ./discordbot/.env
+
+    # --- Restart Policy ---
+    restart: unless-stopped
+
+    # --- Resource Limits ---
+    # Limits resource usage to prevent the bot from consuming the entire system.
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5" # Limits to half a CPU core
+          memory: "128M" # Limits to 128 MB of RAM 

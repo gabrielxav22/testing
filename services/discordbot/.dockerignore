@@ -1,0 +1,11 @@
+# 1. Ignore
+*
+
+# 2. Accept
+!config/
+!config/**
+!features/
+!features/**
+!go.mod
+!go.sum
+!main.go 
